@@ -107,6 +107,7 @@ class TeacherController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $dept = $this->department;
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -114,6 +115,7 @@ class TeacherController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'dept'=> $dept 
         ]);
     }
 
