@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => [
                     'male' => 'Male',
                     'female' => 'Female',
-                    'other'=>'Other'
+                    'others'=>'Others'
                  
                 ],
                 
