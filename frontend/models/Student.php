@@ -28,6 +28,7 @@ class Student extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['name'], 'string', 'max' => 225],
+            [['mentor_id']]
         ];
     }
 
