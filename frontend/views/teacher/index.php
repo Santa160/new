@@ -61,6 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'dept_id',
+                'label'=>'Department',
                 'value' => 'dept.name',
                 'filter' => $dept,
                 'filterInputOptions' => ['class' => 'form-select', 'prompt' => 'All']
