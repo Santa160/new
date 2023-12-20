@@ -3,12 +3,9 @@
 use frontend\models\Teacher;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\grid\ActionColumn;
+
 use yii\grid\GridView;
 
-/** @var yii\web\View $this */
-/** @var frontend\models\TeacherSearch $searchModel */
-/** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Teachers';
 $this->params['breadcrumbs'][] = $this->title;
@@ -23,24 +20,43 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); 
     ?>
+    
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+            
+            'id',
+            [
+                'attribute' => 'name',
+                // 'label' => 'testing',
+                // 'value'=> function($data,$key,$index){
+                //     if($data->id % 2){
 
-        
-            'name',
+                //         return $data->name.' '.$key;
+                //     }else{
+
+                //         return $data->name;
+                //     }
+                // }
+                'value'=>'name'
+
+               
+                // 'visible' => false,
+
+            ],
+
             [
                 'attribute' => 'gender',
                 'filter' => [
                     'male' => 'Male',
                     'female' => 'Female',
-                    'others'=>'Others'
-                 
+                    'others' => 'Others'
+
                 ],
-                
+
                 'filterInputOptions' => ['class' => 'form-select', 'prompt' => 'All'],
             ],
             [
@@ -52,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'header'=> 'Action',
+                'header' => 'Action',
                 'urlCreator' => function ($action, Teacher $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                 }

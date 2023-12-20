@@ -60,4 +60,15 @@ class Teacher extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Department::class, ['id' => 'dept_id']);
     }
+
+    public function name($data,$key){
+        
+        if($data->id % 2){
+
+            return $data->name.' Texting '.$key;
+        }else{
+
+            return $data->name;
+        }
+    }
 }
