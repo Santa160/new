@@ -27,8 +27,12 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
+            [['mentor_id'], 'safe'],
             [['name'], 'string', 'max' => 225],
-            [['mentor_id']]
+            [['mentor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teacher::class, 'targetAttribute' => ['mentor_id' => 'id']],
+
+
+
         ];
     }
 
@@ -40,6 +44,14 @@ class Student extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'mentor_id' => 'Mentor'
+
+
         ];
+    }
+
+    public function getTeacher()
+    {
+        return $this->hasOne(Teacher::className(), ['id' => 'mentor_id']);
     }
 }

@@ -4,9 +4,11 @@ namespace frontend\controllers;
 
 use frontend\models\Student;
 use frontend\models\StudentSearch;
+use frontend\models\Teacher;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * StudentController implements the CRUD actions for Student model.
@@ -40,10 +42,14 @@ class StudentController extends Controller
     {
         $searchModel = new StudentSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $teacher = ArrayHelper::map(Teacher::find()->select('id,name')->all(),'id','name');
+
+        
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'teacher'=>$teacher
         ]);
     }
 
