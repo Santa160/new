@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use kartik\date\DatePicker;
 
 /** @var yii\web\View $this */
 /** @var frontend\models\StudentSearch $searchModel */
@@ -28,6 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); 
     ?>
 
+
+   
+
    
 
     <?= GridView::widget([
@@ -38,6 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
+            'dob',
             [
                 'attribute' => 'mentor_id',
                 'value'=>'teacher.name',

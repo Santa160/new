@@ -26,7 +26,8 @@ class Student extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['name','mentor_id','dob'], 'required'],
+            [['dob'], 'date','format' => 'yyyy-mm-dd'],
             [['mentor_id'], 'safe'],
             [['name'], 'string', 'max' => 225],
             [['mentor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teacher::class, 'targetAttribute' => ['mentor_id' => 'id']],
@@ -44,6 +45,7 @@ class Student extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'dob' => 'Birthday',
             'mentor_id' => 'Mentor'
 
 

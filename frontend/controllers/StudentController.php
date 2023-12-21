@@ -74,6 +74,8 @@ class StudentController extends Controller
     public function actionCreate()
     {
         $model = new Student();
+        $teacher = ArrayHelper::map(Teacher::find()->select('id,name')->all(),'id','name');
+       
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -85,6 +87,7 @@ class StudentController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'teacher'=>$teacher
         ]);
     }
 
